@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 struct Record
 {
@@ -189,19 +190,27 @@ void searchByName()
 
 void displayRecordsWithinDistance()
 {
-    // struct Node *temp = start;
-    // printf("Records at given distance\n");
-    // // Traverse the list and calculate the distance of each record from the specified point
-    // while (temp != NULL)
-    // {
-    //     double distance = sqrt(pow(temp->x - x0, 2) + pow(temp->y - y0, 2));
-    //     // If the distance is less than or equal to the given distance, print the record details
-    //     if (distance <= dist)
-    //     {
-    //         printf("[City = %s , X = %d , Y = %d , Distance = %lf]\n", temp->city, temp->x, temp->y, dist);
-    //     }
-    //     temp = temp->next;
-    // }
+    int x0, y0, dist;
+    struct Record *temp = start;
+    printf("Enter X coordinates of city: ");
+    scanf("%d", &x0);
+    printf("Enter Y coordinates of city: ");
+    scanf("%d", &y0);
+    printf("Enter distance from point: ");
+    scanf("%d", &dist);
+
+    printf("Records at given distance\n");
+    // Traverse the list and calculate the distance of each record from the specified point
+    while (temp != NULL)
+    {
+        double distance = sqrt(pow(temp->x - x0, 2) + pow(temp->y - y0, 2));
+        // If the distance is less than or equal to the given distance, print the record details
+        if (distance <= dist)
+        {
+            printf("[City = %s , X = %d , Y = %d , Distance = %lf]\n", temp->name, temp->x, temp->y, dist);
+        }
+        temp = temp->link;
+    }
 }
 
 int main()

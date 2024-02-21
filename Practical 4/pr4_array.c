@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #define max_size 1000 // Maximum number of records
 
@@ -13,16 +14,6 @@ struct Record
 
 struct Record database[max_size]; // Create an array of structures
 int size_count = -1;
-// struct Record *createNewNode(char name[], int x, int y)
-// {
-//     struct Record *newNode = (struct Record *)malloc(sizeof(struct Record));
-//     strncpy(newNode->name, name, sizeof(newNode->name));
-//     newNode->x = x;
-//     newNode->y = y;
-//     newNode->link = NULL;
-//     printf("Created new Node with name of %s\n", name);
-//     return newNode;
-// }
 
 void display()
 {
@@ -165,6 +156,25 @@ void searchByName()
 
 void displayRecordsWithinDistance()
 {
+    int x0, y0, dist;
+    printf("Enter X coordinates of city: ");
+    scanf("%d", &x0);
+    printf("Enter Y coordinates of city: ");
+    scanf("%d", &y0);
+    printf("Enter distance from point: ");
+    scanf("%d", &dist);
+
+    printf("Records at given distance\n");
+    // Traverse the list and calculate the distance of each record from the specified point
+    for (int i = 0; i <= size_count; i++)
+    {
+        double distance = sqrt(pow(database[i].x - x0, 2) + pow(database[i].y - y0, 2));
+        // If the distance is less than or equal to the given distance, print the record details
+        if (distance <= dist)
+        {
+            printf("[City = %s , X = %d , Y = %d , Distance = %lf]\n", database[i].name, database[i].x, database[i].y, dist);
+        }
+    }
 }
 
 int main()

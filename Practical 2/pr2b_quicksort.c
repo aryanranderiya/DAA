@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Function to swap two elements
 void swap(int *a, int *b)
 {
     int t = *a;
@@ -7,6 +8,7 @@ void swap(int *a, int *b)
     *b = t;
 }
 
+// Function to partition the array and return the pivot index
 int partition(int a[], int low, int high)
 {
     int pivot = a[high];
@@ -23,6 +25,8 @@ int partition(int a[], int low, int high)
     return (i + 1);
 }
 
+// Function to perform quicksort recursively
+
 void quickSort(int a[], int low, int high)
 {
     if (low < high)
@@ -33,6 +37,7 @@ void quickSort(int a[], int low, int high)
     }
 }
 
+// Function to print the array
 void printArray(int a[], int size)
 {
     for (int i = 0; i < size; ++i)
