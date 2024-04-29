@@ -41,14 +41,16 @@ int maxProfit(int prices[], int n)
         {
             totalProfit += maxPrice - minPrice;
 
-            // Remove prices between min and max (inclusive)
-            for (int i = minIndex; i < n - 1; i++)
+            // Delete elements at minIndex and maxIndex
+            // Move elements after maxIndex to fill the gap left by deletion
+            for (int i = maxIndex + 1; i < n; i++)
             {
-                prices[i] = prices[i + 1];
+                prices[i - 1] = prices[i];
             }
             n--; // Decrement array size
 
-            for (int i = maxIndex - 1; i < n - 1; i++)
+            // Move elements after minIndex to fill the gap left by deletion
+            for (int i = minIndex; i < n; i++)
             {
                 prices[i] = prices[i + 1];
             }
